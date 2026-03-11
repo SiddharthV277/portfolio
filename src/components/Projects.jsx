@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { FaPhp, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { SiMysql } from "react-icons/si";
 
 import dashboard from "../assets/images/Dashboard.png";
 import students from "../assets/images/Student_records.png";
@@ -53,12 +55,39 @@ function Projects() {
             organized data management using PHP and MySQL.
           </p>
 
-          <div className="mb-8">
-            <span className="text-cyan-400 font-semibold">Tech Stack:</span>
-            <p className="text-gray-300">
-              PHP • MySQL • HTML • CSS
-            </p>
-          </div>
+         <div className="mb-10">
+
+  <span className="text-cyan-400 font-semibold block mb-6">
+    Tech Stack
+  </span>
+
+  <div className="tech-stack-container flex justify-center items-center gap-12 text-4xl text-gray-300">
+    
+ <div className="tech-icon text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
+  <div className="tech-bounce">
+    <FaPhp className="tech-icon text-indigo-400 cursor-pointer" title="PHP" />
+  </div>
+  </div>
+<div className="tech-icon text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
+  <div className="tech-bounce">
+    <SiMysql className="tech-icon text-blue-400 cursor-pointer" title="MySQL" />
+  </div>
+  </div>
+<div className="tech-icon text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
+  <div className="tech-bounce">
+    <FaHtml5 className="tech-icon text-orange-500 cursor-pointer" title="HTML5" />
+  </div>
+  </div>
+<div className="tech-icon text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
+  <div className="tech-bounce">
+    <FaCss3Alt className="tech-icon text-blue-500 cursor-pointer" title="CSS3" />
+  </div>
+  </div>
+  
+
+</div>
+
+</div>
 
           {/* Screenshot Grid */}
 
