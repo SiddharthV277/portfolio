@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { FaHtml5, FaCss3Alt, FaPhp } from "react-icons/fa";
+import { SiMysql, SiCplusplus, SiC } from "react-icons/si";
 
 function Skills() {
   return (
@@ -16,50 +18,39 @@ function Skills() {
           Skills & Technologies
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* TECHNOLOGY ICONS */}
 
-          {/* Programming Languages */}
-          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-400 transition">
-            <h3 className="text-xl font-semibold text-cyan-300 mb-4">
-              Programming Languages
-            </h3>
+        <div className="mb-20 text-center">
 
-            <ul className="space-y-2 text-gray-300">
-              <li>C</li>
-              <li>C++</li>
-              <li>PHP</li>
-            </ul>
+          <h3 className="text-cyan-400 font-semibold mb-8 tracking-wider">
+            TECHNOLOGIES
+          </h3>
+
+          <div className="flex flex-wrap justify-center gap-12 text-5xl">
+
+            <SiC className="skill-icon text-blue-400 hover:drop-shadow-[0_0_10px_cyan]" />
+
+<SiCplusplus className="skill-icon text-blue-500 hover:drop-shadow-[0_0_10px_cyan]" />
+
+<FaPhp className="skill-icon text-indigo-400 hover:drop-shadow-[0_0_10px_cyan]" />
+
+<FaHtml5 className="skill-icon text-orange-500 hover:drop-shadow-[0_0_10px_cyan]" />
+
+<FaCss3Alt className="skill-icon text-blue-500 hover:drop-shadow-[0_0_10px_cyan]" />
+
+<SiMysql className="skill-icon text-sky-400 hover:drop-shadow-[0_0_10px_cyan]" />
+
           </div>
 
-          {/* Web Development */}
-          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-400 transition">
-            <h3 className="text-xl font-semibold text-cyan-300 mb-4">
-              Web Development
-            </h3>
+        </div>
 
-            <ul className="space-y-2 text-gray-300">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Responsive Layout Design</li>
-            </ul>
-          </div>
 
-          {/* Backend & Database */}
-          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-400 transition">
-            <h3 className="text-xl font-semibold text-cyan-300 mb-4">
-              Backend & Database
-            </h3>
+        {/* CAPABILITIES */}
 
-            <ul className="space-y-2 text-gray-300">
-              <li>PHP Backend Development</li>
-              <li>MySQL Database Design</li>
-              <li>CRUD Operations</li>
-              <li>Database Integration</li>
-            </ul>
-          </div>
+        <div className="grid md:grid-cols-3 gap-10">
 
-          {/* Software Development */}
-          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-400 transition">
+          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8">
+
             <h3 className="text-xl font-semibold text-cyan-300 mb-4">
               Software Development
             </h3>
@@ -70,10 +61,12 @@ function Skills() {
               <li>Problem Solving</li>
               <li>Algorithmic Thinking</li>
             </ul>
+
           </div>
 
-          {/* Tools */}
-          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-400 transition">
+
+          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8">
+
             <h3 className="text-xl font-semibold text-cyan-300 mb-4">
               Tools & Environment
             </h3>
@@ -84,10 +77,12 @@ function Skills() {
               <li>Git & GitHub</li>
               <li>MySQL Workbench</li>
             </ul>
+
           </div>
 
-          {/* Focus Areas */}
-          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-400 transition">
+
+          <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8">
+
             <h3 className="text-xl font-semibold text-cyan-300 mb-4">
               Focus Areas
             </h3>
@@ -98,6 +93,7 @@ function Skills() {
               <li>Database Architecture</li>
               <li>Practical Software Solutions</li>
             </ul>
+
           </div>
 
         </div>
