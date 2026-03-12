@@ -13,7 +13,9 @@ import {
   SiCplusplus,
   SiJavascript,
   SiTailwindcss,
-  SiNodedotjs
+  SiNodedotjs,
+  SiTypescript,
+  SiReact
 } from "react-icons/si";
 
 
@@ -38,7 +40,7 @@ function Skills() {
 
         <div className="mb-24">
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
 
             <TechIcon icon={<SiC />} label="C" color="text-blue-400" />
 
@@ -53,8 +55,12 @@ function Skills() {
             <TechIcon icon={<FaCss3Alt />} label="CSS3" color="text-blue-500" />
 
             <TechIcon icon={<SiJavascript />} label="JavaScript" color="text-yellow-400" />
+            
+            <TechIcon icon={<SiTypescript />} label="TypeScript" color="text-blue-500" />
+            
+            <TechIcon icon={<SiReact />} label="React" color="text-cyan-400" />
 
-            <TechIcon icon={<SiTailwindcss />} label="Tailwind CSS" color="text-cyan-400" />
+            <TechIcon icon={<SiTailwindcss />} label="Tailwind" color="text-cyan-400" />
 
             <TechIcon icon={<SiNodedotjs />} label="Node.js" color="text-green-500" />
 
