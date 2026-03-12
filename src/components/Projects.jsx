@@ -41,7 +41,7 @@ function Projects() {
           Projects
         </motion.h2>
 
-        <div className="bg-slate-900/40 backdrop-blur-xl border border-cyan-500/20 rounded-xl p-8">
+        <div className="glass-card p-8">
 
           <h3 className="text-2xl font-semibold mb-4">
             Coaching Institute Management System (CIMS)
@@ -61,31 +61,22 @@ function Projects() {
     Tech Stack
   </span>
 
-  <div className="tech-stack-container flex justify-center items-center gap-12 text-4xl text-gray-300">
+  <div className="tech-stack-container flex justify-center items-center gap-12 text-4xl text-gray-300 mb-6">
     
- <div className="tech-icon text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
-  <div className="tech-bounce">
-    <FaPhp className="tech-icon text-indigo-400 cursor-pointer" title="PHP" />
+    <div className="tech-bounce text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
+      <FaPhp className="tech-icon" title="PHP" />
+    </div>
+    <div className="tech-bounce text-blue-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
+      <SiMysql className="tech-icon" title="MySQL" />
+    </div>
+    <div className="tech-bounce text-orange-500 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
+      <FaHtml5 className="tech-icon" title="HTML5" />
+    </div>
+    <div className="tech-bounce text-blue-500 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
+      <FaCss3Alt className="tech-icon" title="CSS3" />
+    </div>
+    
   </div>
-  </div>
-<div className="tech-icon text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
-  <div className="tech-bounce">
-    <SiMysql className="tech-icon text-blue-400 cursor-pointer" title="MySQL" />
-  </div>
-  </div>
-<div className="tech-icon text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
-  <div className="tech-bounce">
-    <FaHtml5 className="tech-icon text-orange-500 cursor-pointer" title="HTML5" />
-  </div>
-  </div>
-<div className="tech-icon text-indigo-400 cursor-pointer hover:drop-shadow-[0_0_12px_cyan]">
-  <div className="tech-bounce">
-    <FaCss3Alt className="tech-icon text-blue-500 cursor-pointer" title="CSS3" />
-  </div>
-  </div>
-  
-
-</div>
 
 </div>
 

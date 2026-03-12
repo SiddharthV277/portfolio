@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
@@ -25,28 +31,72 @@ function Navbar() {
           Siddharth
         </h1>
 
-        <ul className="flex space-x-8 text-gray-300">
-          <li className="hover:text-cyan-400 cursor-pointer transition">Home</li>
-          <a href="#about">
-  <li className="hover:text-cyan-400 cursor-pointer transition">About</li>
-</a>
-          <a href="#projects">
-  <li className="hover:text-cyan-400 cursor-pointer transition">
-    Projects
-  </li>
-</a>
-          <a href="#skills">
-  <li className="hover:text-cyan-400 cursor-pointer transition">
-    Skills
-  </li>
-</a>
-          <a href="#contact">
-  <li className="hover:text-cyan-400 cursor-pointer transition">
-    Contact
-  </li>
-</a>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex space-x-8 text-gray-300">
+          <li className="hover:text-cyan-400 cursor-pointer transition">
+            <a href="#home">Home</a>
+          </li>
+          <li className="hover:text-cyan-400 cursor-pointer transition">
+            <a href="#about">About</a>
+          </li>
+          <li className="hover:text-cyan-400 cursor-pointer transition">
+            <a href="#projects">Projects</a>
+          </li>
+          <li className="hover:text-cyan-400 cursor-pointer transition">
+            <a href="#skills">Skills</a>
+          </li>
+          <li className="hover:text-cyan-400 cursor-pointer transition">
+            <a href="#contact">Contact</a>
+          </li>
         </ul>
 
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 relative"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span
+            className={`block w-6 h-0.5 bg-cyan-400 transform transition duration-300 ease-in-out ${
+              isOpen ? "rotate-45 translate-y-2" : ""
+            }`}
+          />
+          <span
+            className={`block w-6 h-0.5 bg-cyan-400 transition duration-300 ease-in-out ${
+              isOpen ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block w-6 h-0.5 bg-cyan-400 transform transition duration-300 ease-in-out ${
+              isOpen ? "-rotate-45 -translate-y-2" : ""
+            }`}
+          />
+        </button>
+
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transform transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <ul className="flex flex-col space-y-8 text-2xl text-gray-300 text-center">
+          <li className="hover:text-cyan-400 cursor-pointer transition" onClick={() => setIsOpen(false)}>
+            <a href="#home">Home</a>
+          </li>
+          <li className="hover:text-cyan-400 cursor-pointer transition" onClick={() => setIsOpen(false)}>
+            <a href="#about">About</a>
+          </li>
+          <li className="hover:text-cyan-400 cursor-pointer transition" onClick={() => setIsOpen(false)}>
+            <a href="#projects">Projects</a>
+          </li>
+          <li className="hover:text-cyan-400 cursor-pointer transition" onClick={() => setIsOpen(false)}>
+            <a href="#skills">Skills</a>
+          </li>
+          <li className="hover:text-cyan-400 cursor-pointer transition" onClick={() => setIsOpen(false)}>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
       </div>
     </nav>
   );

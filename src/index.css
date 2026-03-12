@@ -1,26 +1,14 @@
 @import "tailwindcss";
 
 body {
-  background-color: #020617;
+  background: #020617;
 }
 
-.grid-bg {
-  position: relative;
-  background-image:
-    linear-gradient(rgba(56,189,248,0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56,189,248,0.18) 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-attachment: fixed;
+* {
+  cursor: none !important;
 }
 
-.grid-bg::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(56,189,248,0.12), transparent 70%);
-  pointer-events: none;
-  z-index: -1;
-}
+
 
 .glow-text {
   animation: glowPulse 3s ease-in-out infinite;
@@ -109,4 +97,67 @@ body {
 
 .skill-icon:hover {
   transform: scale(1.15);
+}
+.glass-card {
+  position: relative;
+  overflow: hidden;
+
+  /* semi-transparent bright tint for fog effect */
+  background: rgba(255, 255, 255, 0.02);
+
+  /* frosted glass blur adjusted to keep grid visible */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  border-radius: 14px;
+  border: 1px solid rgba(56,189,248,0.25);
+
+  transition: all 0.4s ease;
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56,189,248,0.7);
+  box-shadow: 0 0 30px rgba(56,189,248,0.2);
+}
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+
+  /* Ambient reflection */
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.08),
+    transparent 40%
+  );
+}
+
+/* Sweep shine effect on hover */
+.glass-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.1s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.glass-card:hover::after {
+  left: 150%;
+  transition: left 0.6s ease-in-out;
 }
