@@ -55,19 +55,19 @@ function CustomCursor() {
     <>
       {/* Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-gray-500 rounded-full pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-10 h-10 border border-yellow-400 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(234,179,8,0.5)]"
         animate={{
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
           scale: isHovering ? 1.5 : 1,
           opacity: isVisible ? 1 : 0,
-          backgroundColor: isHovering ? "rgba(255, 255, 255, 0.1)" : "transparent"
+          backgroundColor: isHovering ? "rgba(234, 179, 8, 0.15)" : "transparent"
         }}
         transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
       />
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-2 h-2 bg-yellow-400 rounded-full pointer-events-none z-[9999]"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
