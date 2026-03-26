@@ -11,7 +11,7 @@ function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-cyan-400 mb-12"
+          className="text-4xl font-bold text-yellow-400 mb-12"
         >
           Contact
         </motion.h2>
@@ -34,7 +34,7 @@ function Contact() {
 
           <a
             href="mailto:siddharth.rnc@gmail.com"
-            className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 rounded-xl font-semibold transition shadow-lg shadow-cyan-500/30"
+            className="px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 rounded-xl font-semibold transition shadow-lg shadow-yellow-500/30"
           >
             Email Me
           </a>
@@ -45,7 +45,7 @@ function Contact() {
             href="https://github.com/SiddharthV277"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 border border-cyan-500 hover:bg-cyan-500/10 rounded-xl font-semibold transition"
+            className="px-8 py-4 border border-yellow-500 hover:bg-yellow-500/10 rounded-xl font-semibold transition"
           >
             View GitHub
           </a>

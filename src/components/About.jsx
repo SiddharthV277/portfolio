@@ -10,7 +10,7 @@ function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-10 text-cyan-400"
+          className="text-4xl font-bold mb-10 text-yellow-400"
         >
           About Me
         </motion.h2>

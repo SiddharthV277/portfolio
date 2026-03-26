@@ -30,7 +30,7 @@ function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-cyan-400 mb-16 text-center"
+          className="text-4xl font-bold text-yellow-400 mb-16 text-center"
         >
           Skills & Technologies
         </motion.h2>
@@ -42,25 +42,25 @@ function Skills() {
 
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-8">
 
-            <TechIcon icon={<SiC />} label="C" color="text-blue-400" />
+            <TechIcon icon={<SiC />} label="C" color="text-yellow-400" />
 
-            <TechIcon icon={<SiCplusplus />} label="C++" color="text-blue-500" />
+            <TechIcon icon={<SiCplusplus />} label="C++" color="text-yellow-500" />
 
-            <TechIcon icon={<FaPhp />} label="PHP" color="text-indigo-400" />
+            <TechIcon icon={<FaPhp />} label="PHP" color="text-yellow-600" />
 
-            <TechIcon icon={<SiMysql />} label="MySQL" color="text-sky-400" />
+            <TechIcon icon={<SiMysql />} label="MySQL" color="text-yellow-400" />
 
-            <TechIcon icon={<FaHtml5 />} label="HTML5" color="text-orange-500" />
+            <TechIcon icon={<FaHtml5 />} label="HTML5" color="text-yellow-500" />
 
-            <TechIcon icon={<FaCss3Alt />} label="CSS3" color="text-blue-500" />
+            <TechIcon icon={<FaCss3Alt />} label="CSS3" color="text-yellow-600" />
 
             <TechIcon icon={<SiJavascript />} label="JavaScript" color="text-yellow-400" />
             
-            <TechIcon icon={<SiTypescript />} label="TypeScript" color="text-blue-500" />
+            <TechIcon icon={<SiTypescript />} label="TypeScript" color="text-yellow-500" />
             
-            <TechIcon icon={<SiReact />} label="React" color="text-cyan-400" />
+            <TechIcon icon={<SiReact />} label="React" color="text-yellow-400" />
 
-            <TechIcon icon={<SiTailwindcss />} label="Tailwind" color="text-cyan-400" />
+            <TechIcon icon={<SiTailwindcss />} label="Tailwind" color="text-yellow-400" />
 
             <TechIcon icon={<SiNodedotjs />} label="Node.js" color="text-green-500" />
 
@@ -81,7 +81,7 @@ function Skills() {
 
           <div className="glass-card p-8">
 
-            <h3 className="text-xl font-semibold text-cyan-300 mb-4">
+            <h3 className="text-xl font-semibold text-yellow-300 mb-4">
               Software Development
             </h3>
 
@@ -99,7 +99,7 @@ function Skills() {
 
           <div className="glass-card p-8">
 
-            <h3 className="text-xl font-semibold text-cyan-300 mb-4">
+            <h3 className="text-xl font-semibold text-yellow-300 mb-4">
               Tools & Environment
             </h3>
 
@@ -117,7 +117,7 @@ function Skills() {
 
           <div className="glass-card p-8">
 
-            <h3 className="text-xl font-semibold text-cyan-300 mb-4">
+            <h3 className="text-xl font-semibold text-yellow-300 mb-4">
               Focus Areas
             </h3>
 
@@ -146,7 +146,7 @@ function TechIcon({ icon, label, color }) {
   return (
     <div className="glass-card flex flex-col items-center justify-center p-6">
 
-      <div className={`text-4xl mb-3 skill-icon ${color} hover:drop-shadow-[0_0_12px_cyan]`}>
+      <div className={`text-4xl mb-3 skill-icon ${color} hover:drop-shadow-[0_0_12px_yellow]`}>
         {icon}
       </div>
 

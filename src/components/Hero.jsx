@@ -19,13 +19,13 @@ function Hero() {
           <div className="relative group">
             
             {/* Glow Ring */}
-            <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-xl group-hover:bg-cyan-400/30 transition duration-500"></div>
+            <div className="absolute inset-0 rounded-full bg-yellow-500/20 blur-xl group-hover:bg-yellow-400/30 transition duration-500"></div>
 
             {/* Image */}
             <img
               src={profile}
               alt="Siddharth Verma"
-              className="relative w-36 h-36 md:w-40 md:h-40 rounded-full object-cover border-4 border-cyan-400 shadow-lg shadow-cyan-500/40 transition duration-300 group-hover:scale-105"
+              className="relative w-36 h-36 md:w-40 md:h-40 rounded-full object-cover border-4 border-yellow-400 shadow-lg shadow-yellow-500/40 transition duration-300 group-hover:scale-105"
             />
           </div>
         </motion.div>
@@ -56,7 +56,7 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="inline-block px-8 py-4 bg-cyan-500 hover:bg-cyan-400 rounded-xl font-semibold transition shadow-lg shadow-cyan-500/30"
+          className="inline-block px-8 py-4 bg-yellow-500 hover:bg-yellow-400 rounded-xl font-semibold transition shadow-lg shadow-yellow-500/30 text-gray-900"
         >
           View Projects
         </motion.a>
