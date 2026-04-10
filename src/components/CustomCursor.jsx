@@ -12,13 +12,8 @@ function CustomCursor() {
       if (!isVisible) setIsVisible(true);
     };
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-    
-    const handleMouseEnter = () => {
-      setIsVisible(true);
-    };
+    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseEnter = () => setIsVisible(true);
 
     const handleMouseOver = (e) => {
       const target = e.target;
@@ -30,7 +25,7 @@ function CustomCursor() {
         target.closest("button") ||
         target.classList.contains("cursor-pointer") ||
         target.closest(".tech-icon") ||
-        target.closest(".glass-card")
+        target.closest(".pixel-btn")
       ) {
         setIsHovering(true);
       } else {
@@ -53,28 +48,29 @@ function CustomCursor() {
 
   return (
     <>
-      {/* Outer Ring */}
+      {/* Outer Pixel Box */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-yellow-400 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_rgba(234,179,8,0.5)]"
+        className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] opacity-90 mix-blend-screen"
         animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          scale: isHovering ? 1.5 : 1,
+          x: mousePosition.x - 16,
+          y: mousePosition.y - 16,
+          scale: isHovering ? 1.3 : 1,
           opacity: isVisible ? 1 : 0,
-          backgroundColor: isHovering ? "rgba(234, 179, 8, 0.15)" : "transparent"
         }}
-        transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
-      />
-      {/* Inner Dot */}
+        transition={{ type: "spring", stiffness: 300, damping: 25, mass: 0.5 }}
+      >
+        <div className={`w-full h-full border-4 border-solid ${isHovering ? 'border-[var(--color-brand-peach)] shadow-[0_0_15px_var(--color-brand-peach)]' : 'border-[var(--color-brand-pink)] shadow-[0_0_10px_var(--color-brand-pink)]'} transition-colors duration-300`}></div>
+      </motion.div>
+      
+      {/* Inner Core */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-yellow-400 rounded-full pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-2 h-2 bg-white pointer-events-none z-[9999] shadow-[0_0_8px_white]"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
-          scale: isHovering ? 0 : 1,
-          opacity: isVisible ? 1 : 0
+          opacity: isHovering ? 0 : 1
         }}
-        transition={{ type: "spring", stiffness: 1000, damping: 50, mass: 0.1 }}
+        transition={{ duration: 0.1 }}
       />
     </>
   );

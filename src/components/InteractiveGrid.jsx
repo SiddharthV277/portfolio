@@ -1,105 +1,82 @@
 import { useEffect, useRef, useMemo } from "react";
-import { FaHtml5, FaCss3Alt, FaPhp, FaGit, FaReact } from "react-icons/fa";
-import { SiMysql, SiJavascript, SiTailwindcss, SiNodedotjs, SiTypescript, SiCplusplus } from "react-icons/si";
-
-const ICONS = [
-  FaHtml5, FaCss3Alt, FaPhp, FaGit, FaReact,
-  SiMysql, SiJavascript, SiTailwindcss, SiNodedotjs, SiTypescript, SiCplusplus
-];
+import bgImage from "../assets/images/pixel_bg.png";
 
 export default function InteractiveGrid() {
-  // Generate random positions once using useMemo to avoid hydration/render mismatch
-  const items = useMemo(() => {
-    const arr = [];
-    // Lowered quantity slightly from 500 to a guaranteed 150-250 range. 
-    // 500 animated DOM nodes will cripple the browser layout engine. 150-250 provides a dense layout without locking up the CPU.
-    const randomAmount = Math.floor(Math.random() * 101) + 150; 
-    for (let i = 0; i < randomAmount; i++) {
-        const IconComponent = ICONS[Math.floor(Math.random() * ICONS.length)];
-        arr.push({
-            id: i,
-            Icon: IconComponent,
-            top: 2 + Math.random() * 96,
-            left: 2 + Math.random() * 96,
-            depth: Math.random() * 0.7 + 0.3,
-            baseGlow: Math.random() * 0.2 + 0.1, 
-            rotation: Math.random() * 360, 
-            sizeScale: Math.random() * 0.8 + 0.3 // keep them ant-sized
-        });
-    }
-    return arr;
+  const containerRef = useRef(null);
+
+  // Generate leaf config once
+  const leaves = useMemo(() => {
+    return Array.from({ length: 40 }).map((_, i) => ({
+      id: i,
+      baseLeft: Math.random() * 110,
+      baseSpeed: 1 + Math.random() * 2, // pixels per frame
+      baseSway: Math.random() * 3 + 1, // amplitude of wind sway
+      size: Math.random() * 8 + 4,
+      opacity: Math.random() * 0.5 + 0.3,
+      // starting offset
+      yPos: Math.random() * -1000,
+      xOffset: 0,
+    }));
   }, []);
 
-  const containerRef = useRef(null);
-  
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     let mouse = { x: -1000, y: -1000 };
-    
-    const magneticRadius = 250; 
-    const magneticRadiusSq = magneticRadius * magneticRadius; // Optimized distance calculation
-    
-    const iconNodes = Array.from(container.querySelectorAll('.bg-icon-item'));
-    const basePositions = iconNodes.map(node => {
-        const rect = node.getBoundingClientRect();
-        return {
-            x: rect.left + rect.width / 2,
-            y: rect.top + rect.height / 2
-        };
-    });
-
-    let animationFrameId;
+    const magneticRadiusSq = 150 * 150; 
 
     const onMouseMove = (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
     };
-
     window.addEventListener("mousemove", onMouseMove);
 
+    const leafNodes = Array.from(container.querySelectorAll('.cherry-leaf'));
+    let animationFrameId;
+
     function render() {
-      const time = Date.now() / 1500;
-      
-      iconNodes.forEach((node, index) => {
-        const item = items[index];
-        const base = basePositions[index];
+      const time = Date.now() / 1000;
+      const vh = window.innerHeight;
+
+      leafNodes.forEach((node, index) => {
+        const item = leaves[index];
         
-        const dx = mouse.x - base.x;
-        const dy = mouse.y - base.y;
-        const distSq = dx * dx + dy * dy; // Avoiding expensive Math.sqrt unless necessary
+        // Base downward movement (mod by height to loop)
+        item.yPos += item.baseSpeed;
+        if (item.yPos > vh + 100) {
+          item.yPos = -100; // Reset to top
+          item.xOffset = 0; // Reset physical offsets
+        }
 
-        let transformX = 0;
-        let transformY = 0;
-        let scale = 1;
-        let isNear = false;
-        let force = 0;
+        // Base wind sway
+        const windSway = Math.sin(time * item.baseSway + index) * 30;
+        
+        // Calculate bounding coordinates
+        const rect = node.getBoundingClientRect();
+        const leafCenterX = rect.left + rect.width / 2;
+        const leafCenterY = rect.top + rect.height / 2;
 
+        const dx = mouse.x - leafCenterX;
+        const dy = mouse.y - leafCenterY;
+        const distSq = dx * dx + dy * dy;
+
+        // Interaction: leaves fly away from mouse
         if (distSq < magneticRadiusSq) {
-            isNear = true;
-            const distance = Math.sqrt(distSq);
-            force = 1 - (distance / magneticRadius);
-            transformX = (dx / distance) * (force * 30 * item.depth);
-            transformY = (dy / distance) * (force * 30 * item.depth);
-            scale = 1 + force * 0.4; 
+          const force = 1 - Math.sqrt(distSq) / 150;
+          // Apply a velocity offset based on angle
+          item.xOffset -= (dx * force * 0.05);
+          item.yPos -= (dy * force * 0.05); 
         }
 
-        const floatY = Math.sin(time + index) * 15 * item.depth;
-        const floatX = Math.cos(time * 0.8 + index) * 10 * item.depth;
-        
-        // using translate3d triggers hardware GUI acceleration 
-        node.style.transform = `translate3d(${transformX + floatX}px, ${transformY + floatY}px, 0) scale(${scale}) rotate(${item.rotation}deg)`;
-        
-        const opacity = Math.min(1, item.baseGlow + (isNear ? force * 0.6 : 0) + (Math.sin(time * 2 + index) * 0.1));
-        node.style.opacity = opacity;
-        
-        // Replaced expensive drop-shadow filters with strict color toggling for rapid rendering 
-        if (isNear) {
-            node.style.color = `rgba(234, 179, 8, 1)`;
-        } else {
-            node.style.color = `rgba(234, 179, 8, 0.7)`;
-        }
+        // Continually decay the repulsive force offset back towards 0
+        item.xOffset *= 0.98;
+
+        const finalX = `calc(${item.baseLeft}vw + ${windSway + item.xOffset}px)`;
+        const finalY = `${item.yPos}px`;
+        const rotation = (item.yPos * 2 + item.xOffset) % 360;
+
+        node.style.transform = `translate3d(${finalX}, ${finalY}, 0) rotate(${rotation}deg)`;
       });
 
       animationFrameId = requestAnimationFrame(render);
@@ -111,34 +88,35 @@ export default function InteractiveGrid() {
       window.removeEventListener("mousemove", onMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [items]);
+  }, [leaves]);
 
   return (
-    <div 
-        ref={containerRef} 
-        className="fixed inset-0 z-0 pointer-events-none overflow-hidden" 
-        style={{
-            background: 'radial-gradient(circle at center, rgba(234, 179, 8, 0.08) 0%, transparent 60%)'
-        }}
-    >
-      {items.map((item) => {
-        const Icon = item.Icon;
-        return (
+    <>
+      {/* Pixel Background Image */}
+      <div 
+        className="fixed inset-0 z-0 pointer-events-none bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
+        <div className="absolute inset-0 bg-[#0b0614]/60 mix-blend-multiply pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0614] via-transparent to-transparent pointer-events-none"></div>
+      </div>
+
+      {/* Falling Leaves Container */}
+      <div ref={containerRef} className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        {leaves.map((leaf) => (
           <div
-            key={item.id}
-            className="bg-icon-item absolute will-change-transform" // hardware CSS hint
+            key={leaf.id}
+            className="cherry-leaf absolute will-change-transform" /* Using CSS absolute and JS translate3D */
             style={{
-              top: `${item.top}%`,
-              left: `${item.left}%`,
-              fontSize: `${(0.8 + item.depth * 1.2) * item.sizeScale}rem`,
-              opacity: item.baseGlow,
-              // default shadow removed for performance
+              width: `${leaf.size}px`,
+              height: `${leaf.size * 0.7}px`, 
+              opacity: leaf.opacity,
+              backgroundColor: 'var(--color-brand-pink)',
+              boxShadow: '0 0 6px var(--color-brand-pink)'
             }}
-          >
-            <Icon />
-          </div>
-        );
-      })}
-    </div>
+          />
+        ))}
+      </div>
+    </>
   );
 }

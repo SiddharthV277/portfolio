@@ -1,50 +1,48 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-brand-pink: #ff2a6d; /* Neon Pink */
+  --color-brand-peach: #ffb07c; /* Sunset Peach */
+  --color-brand-purple: #36294a; /* Ruins Purple */
+  --color-brand-dark: #1a1025; /* Ruins Deep Indigo */
+  --color-brand-cyan: #05d9e8; /* Accent Cyan */
+
+  --font-sans: "Pixelify Sans", "Press Start 2P", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: "VT323", "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 body {
-  background: #1f2937;
+  background: #0b0614;
   font-family: var(--font-sans);
+  color: #e5e5e5;
+  image-rendering: auto; /* Changed for standard fonts, pixel art is specific to images */
 }
 
+/* Base custom cursor rule */
 * {
   cursor: none !important;
 }
 
 .glow-text {
+  /* Adapted for sunset peach/pink glow */
   animation: glowPulse 3s ease-in-out infinite;
+  color: var(--color-brand-peach);
 }
 
 @keyframes glowPulse {
-  0% {
-    text-shadow: 0 0 10px rgba(234, 179, 8, 0.6);
-  }
-  50% {
-    text-shadow: 0 0 30px rgba(234, 179, 8, 1);
-  }
-  100% {
-    text-shadow: 0 0 10px rgba(234, 179, 8, 0.6);
-  }
+  0% { text-shadow: 0 0 10px rgba(255, 176, 124, 0.6); }
+  50% { text-shadow: 0 0 25px rgba(255, 42, 109, 1); }
+  100% { text-shadow: 0 0 10px rgba(255, 176, 124, 0.6); }
 }
 
-/* container perspective */
-
+/* Reusing bounce/flip animations for consistency */
 .tech-stack-container {
   perspective: 900px;
 }
 
-/* idle bounce */
-
 @keyframes techBounce {
-  0%,100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
 }
 
 .tech-bounce {
@@ -52,15 +50,9 @@ body {
   animation: techBounce 2.4s ease-in-out infinite;
 }
 
-/* smooth 3D flip animation */
-
 @keyframes techFlip {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
 }
 
 .tech-icon {
@@ -68,94 +60,80 @@ body {
   transform-style: preserve-3d;
 }
 
-/* play flip once on hover */
-
 .tech-bounce:hover .tech-icon {
   animation: techFlip 0.8s ease;
+  color: var(--color-brand-cyan) !important;
 }
-
-/* bounce animation */
 
 @keyframes skillBounce {
-  0%,100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
 }
-
-/* skills section icons */
 
 .skill-icon {
   display: inline-block;
   animation: skillBounce 2.4s ease-in-out infinite;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
-
-/* hover effect */
 
 .skill-icon:hover {
   transform: scale(1.15);
+  filter: drop-shadow(0 0 8px var(--color-brand-pink));
 }
 
+/* 
+  NEW PIXEL-ART STONE TABLET CARDS
+  Replaces the frosted glass cards with solid pixel-ruin borders 
+*/
 .glass-card {
   position: relative;
-  overflow: hidden;
-
-  /* Semi-transparent grey for foggy effect (more see-through) */
-  background: rgba(31, 41, 55, 0.15);
-
-  /* Frosted glass blur (stronger for a matte appearance) */
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-
-  transition: all 0.4s ease;
-
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: rgba(26, 16, 37, 0.85); /* Deep dark purple, slightly transparent */
+  border: 3px solid var(--color-brand-purple);
+  border-radius: 4px; /* blocky retro aesthetic */
+  padding: 1.5rem;
+  
+  /* Hard drop shadow mimicking retro/pixel depths */
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.6), inset 2px 2px 0px rgba(255, 255, 255, 0.05);
+  
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Noise overlay for textured feel */
-.glass-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
-  z-index: 1;
-}
-
+/* Hover state brings it 'forward' and makes it glow pink/cyan */
 .glass-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(234, 179, 8, 0.5);
-  box-shadow: 0 8px 32px rgba(234, 179, 8, 0.15);
+  transform: translateY(-4px) translateX(-2px);
+  border-color: var(--color-brand-pink);
+  
+  /* Hard shadow extends slightly, plus an outer neon glow */
+  box-shadow: 8px 10px 0px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 42, 109, 0.4), inset 2px 2px 0px rgba(255, 255, 255, 0.1);
 }
 
-/* Sweep shine effect on hover */
+/* Remove old textures / effects from glass-card */
+.glass-card::before,
 .glass-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-20deg);
-  transition: left 0.1s ease;
-  pointer-events: none;
-  z-index: 10;
+  content: none;
 }
 
-.glass-card:hover::after {
-  left: 150%;
-  transition: left 0.6s ease-in-out;
+/* Pixel Button generic style for any interactive component */
+.pixel-btn {
+  background: var(--color-brand-purple);
+  border: 2px solid #5a4b75;
+  color: var(--color-brand-peach);
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  transition: all 0.1s ease;
+}
+
+.pixel-btn:hover {
+  background: var(--color-brand-pink);
+  border-color: #ff729f;
+  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.9);
+}
+
+.pixel-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.9);
 }
