@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FaPhp, FaHtml5, FaCss3Alt, FaGithub, FaPlay } from "react-icons/fa";
 import { SiMysql } from "react-icons/si";
 
-const cimsVideo = "/portfolio/videos/cims.mp4";
+const cimsVideo = import.meta.env.BASE_URL + "videos/cims.mp4";
 
 const projects = [
   {
@@ -11,7 +11,7 @@ const projects = [
     number: "01",
     title: "CIMS",
     subtitle: "Coaching Institute Management System",
-    year: "2024",
+    year: "2026",
     description:
       "Full-stack admin dashboard for coaching institutes — student admissions, fee installments, batch & staff management.",
     video: cimsVideo,
