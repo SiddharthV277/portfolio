@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FaPhp, FaHtml5, FaCss3Alt, FaGithub, FaPlay } from "react-icons/fa";
 import { SiMysql } from "react-icons/si";
 
-import cimsVideo from "../assets/videos/cims.mp4";
+const cimsVideo = "/portfolio/videos/cims.mp4";
 
 const projects = [
   {
