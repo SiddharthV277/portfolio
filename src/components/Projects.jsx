@@ -126,13 +126,15 @@ function ProjectCard({ project, index }) {
         {/* Always in DOM — avoids timing bug with play() */}
         <video
           ref={videoRef}
-          src={project.video}
           muted
           loop
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
-          style={{ display: "block", minHeight: 180, aspectRatio: "16/9" }}
-        />
+          style={{ display: "block", minHeight: 180, aspectRatio: "16/9", backgroundColor: "#000" }}
+        >
+          <source src={project.video} type="video/mp4" />
+        </video>
 
         {/* Hover-off overlay (play indicator) */}
         <div
