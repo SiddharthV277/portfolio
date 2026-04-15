@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { FaPhp, FaHtml5, FaCss3Alt, FaGithub, FaPlay } from "react-icons/fa";
-import { SiMysql } from "react-icons/si";
+import { FaPhp, FaHtml5, FaCss3Alt, FaGithub, FaPlay, FaNodeJs, FaReact } from "react-icons/fa";
+import { SiMysql, SiSqlite, SiExpress, SiVite, SiCloudflare } from "react-icons/si";
+import recordAssistantVideo from "../assets/videos/record_assistant.mp4";
 
 const cimsVideo = import.meta.env.BASE_URL + "videos/cims.mp4";
 
@@ -22,6 +23,26 @@ const projects = [
       { el: <SiMysql />, color: "#05d9e8", label: "MySQL" },
       { el: <FaHtml5 />, color: "#fb923c", label: "HTML5" },
       { el: <FaCss3Alt />, color: "#60a5fa", label: "CSS3" },
+    ],
+  },
+  {
+    id: "record-assistant",
+    number: "02",
+    title: "Record Assistant",
+    subtitle: "Enterprise Task & Financial Management System",
+    year: "2026",
+    description:
+      "Multi-branch organizational management system built on a local-first, globally accessible architecture. Features a chained settlement engine, real-time financial ledger, role-based access control, and zero-trust global deployment via Cloudflare Tunnels & PM2.",
+    video: recordAssistantVideo,
+    github: "https://github.com/SiddharthV277/RECORD-ASSISTANT",
+    tags: ["Node.js", "Express", "SQLite", "Vite", "React", "Cloudflare"],
+    icons: [
+      { el: <FaNodeJs />, color: "#68A063", label: "Node.js" },
+      { el: <SiExpress />, color: "#c9c4d4", label: "Express" },
+      { el: <SiSqlite />, color: "#05d9e8", label: "SQLite" },
+      { el: <FaReact />, color: "#61DAFB", label: "React" },
+      { el: <SiVite />, color: "#a78bfa", label: "Vite" },
+      { el: <SiCloudflare />, color: "#F38020", label: "Cloudflare" },
     ],
   },
 ];
@@ -130,7 +151,7 @@ function ProjectCard({ project, index }) {
           loop
           playsInline
           preload="auto"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           style={{ display: "block", minHeight: 180, aspectRatio: "16/9", backgroundColor: "#000" }}
         >
           <source src={project.video} type="video/mp4" />
@@ -212,7 +233,7 @@ function Projects() {
               color: "#2a1d3d",
             }}
           >
-            <span className="text-[10px] font-mono">02</span>
+            <span className="text-[10px] font-mono">03</span>
             <span className="text-sm uppercase tracking-widest">More coming soon</span>
           </motion.div>
         </div>
