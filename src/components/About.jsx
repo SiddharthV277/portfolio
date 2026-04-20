@@ -38,6 +38,12 @@ function About() {
           </p>
 
           <p>
+            I also built Record Assistant, an Enterprise Task & Financial 
+            Management System supporting multi-branch organizational management 
+            with a local-first, globally accessible architecture using Node.js, React, and SQLite.
+          </p>
+
+          <p>
             My focus is on creating efficient backend systems and management
             software that simplify complex operations.
           </p>

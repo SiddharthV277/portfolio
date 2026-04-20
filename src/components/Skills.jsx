@@ -15,7 +15,11 @@ import {
   SiTailwindcss,
   SiNodedotjs,
   SiTypescript,
-  SiReact
+  SiReact,
+  SiExpress,
+  SiSqlite,
+  SiVite,
+  SiCloudflare
 } from "react-icons/si";
 
 function Skills() {
@@ -49,7 +53,11 @@ function Skills() {
             <TechIcon icon={<SiReact />} label="React" color="text-[#05d9e8]" />
             <TechIcon icon={<SiTailwindcss />} label="Tailwind" color="text-[#05d9e8]" />
             <TechIcon icon={<SiNodedotjs />} label="Node.js" color="text-[#ff2a6d]" />
-            <TechIcon icon={<FaGit />} label="Git" color="text-[#ff2a6d]" />
+            <TechIcon icon={<SiExpress />} label="Express" color="text-[#ffb07c]" />
+            <TechIcon icon={<SiSqlite />} label="SQLite" color="text-[#05d9e8]" />
+            <TechIcon icon={<SiVite />} label="Vite" color="text-[#ff2a6d]" />
+            <TechIcon icon={<SiCloudflare />} label="Cloudflare" color="text-[#ffb07c]" />
+            <TechIcon icon={<FaGit />} label="Git" color="text-[#05d9e8]" />
 
           </div>
         </div>
