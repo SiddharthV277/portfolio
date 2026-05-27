@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { FaPhp, FaHtml5, FaCss3Alt, FaGithub, FaPlay, FaNodeJs, FaReact } from "react-icons/fa";
+import { FaPhp, FaHtml5, FaCss3Alt, FaGithub, FaPlay, FaNodeJs, FaReact, FaPython, FaNetworkWired } from "react-icons/fa";
 import { SiMysql, SiSqlite, SiExpress, SiVite, SiCloudflare } from "react-icons/si";
 import recordAssistantVideo from "../assets/videos/record_assistant.mp4";
 
@@ -43,6 +43,22 @@ const projects = [
       { el: <FaReact />, color: "#61DAFB", label: "React" },
       { el: <SiVite />, color: "#a78bfa", label: "Vite" },
       { el: <SiCloudflare />, color: "#F38020", label: "Cloudflare" },
+    ],
+  },
+  {
+    id: "dancing-keys",
+    number: "03",
+    title: "Dancing Keys",
+    subtitle: "Audio-reactive strobe controller",
+    year: "2026",
+    description:
+      "This project almost halted because my mouse lacked customizable RGB APIs, but I discovered its proprietary software controlled lighting via USB. By sniffing traffic in Wireshark, I reverse-engineered the USB HID commands. I hit a DPI Trap: color shifts were hard-bound to DPI settings and sequential color cycling. To bypass this hardware limit, I designed high-frequency ON/OFF commands to strobe the active color, syncing the physical mouse light to real-time audio via WASAPI loopback and Spectral Flux beat detection. (Built in collaboration with Antigravity/Claude)",
+    github: "https://github.com/SiddharthV277/Dancing-Keys-EvoFox",
+    tags: ["Python", "React", "WebSocket", "NumPy", "PyAudio", "USB HID"],
+    icons: [
+      { el: <FaPython />, color: "#3776AB", label: "Python" },
+      { el: <FaReact />, color: "#61DAFB", label: "React" },
+      { el: <FaNetworkWired />, color: "#ffffff", label: "WebSockets" },
     ],
   },
 ];
@@ -139,47 +155,58 @@ function ProjectCard({ project, index }) {
         </div>
       </div>
 
-      {/* ── Video Side ── */}
+      {/* ── Video/Image Side ── */}
       <div
         className="relative shrink-0 overflow-hidden bg-[#0b0614]"
         style={{ width: "100%", maxWidth: 280, minHeight: 180 }}
       >
-        {/* Always in DOM — avoids timing bug with play() */}
-        <video
-          ref={videoRef}
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="w-full h-full object-contain"
-          style={{ display: "block", minHeight: 180, aspectRatio: "16/9", backgroundColor: "#000" }}
-        >
-          <source src={project.video} type="video/mp4" />
-        </video>
+        {project.video ? (
+          <>
+            {/* Always in DOM — avoids timing bug with play() */}
+            <video
+              ref={videoRef}
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-full object-contain"
+              style={{ display: "block", minHeight: 180, aspectRatio: "16/9", backgroundColor: "#000" }}
+            >
+              <source src={project.video} type="video/mp4" />
+            </video>
 
-        {/* Hover-off overlay (play indicator) */}
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 gap-2"
-          style={{
-            background: playing ? "rgba(11,6,20,0)" : "rgba(11,6,20,0.75)",
-            backdropFilter: playing ? "none" : "blur(2px)",
-          }}
-        >
-          {!playing && (
-            <>
-              <div
-                className="w-12 h-12 rounded-full border border-[var(--color-brand-cyan)] flex items-center justify-center"
-                style={{ boxShadow: "0 0 14px rgba(5,217,232,0.35)" }}
-              >
-                <FaPlay size={14} className="text-[var(--color-brand-cyan)] ml-0.5" />
-              </div>
-              <span className="text-[9px] uppercase tracking-widest text-[#4a6a80]">
-                Hover to play
-              </span>
-            </>
-          )}
-        </div>
-
+            {/* Hover-off overlay (play indicator) */}
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-300 gap-2"
+              style={{
+                background: playing ? "rgba(11,6,20,0)" : "rgba(11,6,20,0.75)",
+                backdropFilter: playing ? "none" : "blur(2px)",
+              }}
+            >
+              {!playing && (
+                <>
+                  <div
+                    className="w-12 h-12 rounded-full border border-[var(--color-brand-cyan)] flex items-center justify-center"
+                    style={{ boxShadow: "0 0 14px rgba(5,217,232,0.35)" }}
+                  >
+                    <FaPlay size={14} className="text-[var(--color-brand-cyan)] ml-0.5" />
+                  </div>
+                  <span className="text-[9px] uppercase tracking-widest text-[#4a6a80]">
+                    Hover to play
+                  </span>
+                </>
+              )}
+            </div>
+          </>
+        ) : (
+          <img
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='180'><rect width='100%' height='100%' fill='%23000000'/></svg>"
+            alt={project.title}
+            className="w-full h-full object-cover"
+            style={{ display: "block", minHeight: 180, aspectRatio: "16/9" }}
+          />
+        )}
+        
         {/* Scanlines */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -233,7 +260,7 @@ function Projects() {
               color: "#2a1d3d",
             }}
           >
-            <span className="text-[10px] font-mono">03</span>
+            <span className="text-[10px] font-mono">04</span>
             <span className="text-sm uppercase tracking-widest">More coming soon</span>
           </motion.div>
         </div>
