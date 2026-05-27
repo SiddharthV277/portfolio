@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaPhp, FaHtml5, FaCss3Alt, FaGithub, FaPlay, FaNodeJs, FaReact, FaPython, FaNetworkWired } from "react-icons/fa";
-import { SiMysql, SiSqlite, SiExpress, SiVite, SiCloudflare } from "react-icons/si";
+import { SiMysql, SiSqlite, SiExpress, SiVite, SiCloudflare, SiAnthropic, SiGooglegemini } from "react-icons/si";
 import recordAssistantVideo from "../assets/videos/record_assistant.mp4";
 
 const cimsVideo = import.meta.env.BASE_URL + "videos/cims.mp4";
@@ -54,11 +54,13 @@ const projects = [
     description:
       "The project almost died before it started because my mouse doesn't support custom RGB control. But I refused to stop. I literally fired up Wireshark and sniffed USB packets while toggling the vendor app to extract the hex codes controlling the lighting firmware (probably a bit overkill, but it worked!). Just when I thought it was smooth sailing, I hit a massive wall: the colors are physically tied to DPI profiles and can only cycle sequentially (Blue → Red → Purple → Pink). Trying to change colors would make my cursor speed jump violently! I was stuck, but after spending so much brainpower, I wasn't going to quit over a hardware limit. I went for a simpler workaround: using raw ON/OFF commands to create an intense strobe effect instead. Together with Antigravity/Claude, we hooked this strobe engine to system audio via WASAPI loopback and a Spectral Flux beat detection algorithm to make the mouse dance. (Built in collaboration with Antigravity/Claude)",
     github: "https://github.com/SiddharthV277/Dancing-Keys-EvoFox",
-    tags: ["Python", "React", "WebSocket", "NumPy", "PyAudio", "USB HID"],
+    tags: ["Python", "React", "WebSocket", "NumPy", "PyAudio", "USB HID", "Claude", "Antigravity"],
     icons: [
       { el: <FaPython />, color: "#3776AB", label: "Python" },
       { el: <FaReact />, color: "#61DAFB", label: "React" },
       { el: <FaNetworkWired />, color: "#ffffff", label: "WebSockets" },
+      { el: <SiAnthropic />, color: "#E69E81", label: "Claude" },
+      { el: <SiGooglegemini />, color: "#8E75C8", label: "Antigravity" },
     ],
   },
 ];
