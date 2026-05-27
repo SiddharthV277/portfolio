@@ -31,21 +31,15 @@ function About() {
           <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-[var(--color-brand-pink)] to-transparent my-4 opacity-50"></div>
 
           <p>
-            Recently, I developed a complete Coaching Institute Management
-            System (CIMS) using PHP and MySQL. The system manages student
-            admissions, fee installments, batch organization, and staff
-            management through a structured admin dashboard.
+            Recently, I developed <strong>Dancing Keys</strong>, an audio-reactive RGB strobe controller for the EvoFox Phantom Gaming Mouse. The program reverse-engineers proprietary USB HID protocols from scratch to flash the mouse's LED in perfect sync with any music or system audio in real-time. By capturing USB traffic with Wireshark and USBPcap, I mapped out the 8-byte HID feature reports to gain low-level hardware control over the device.
           </p>
 
           <p>
-            I also built Record Assistant, an Enterprise Task & Financial 
-            Management System supporting multi-branch organizational management 
-            with a local-first, globally accessible architecture using Node.js, React, and SQLite.
+            To keep the mouse fully functional, I bypassed exclusive-access cursor locking by implementing non-exclusive communication using the Windows HID API with <code>pywinusb</code>. I also engineered a creative workaround for a physical hardware limitation: since the mouse's colors are tied directly to DPI sensitivity profiles, I designed high-frequency ON/OFF strobe commands (<code>0x13</code>/<code>0x17</code>) that preserve user sensitivity while producing a high-performance visual display.
           </p>
 
           <p>
-            My focus is on creating efficient backend systems and management
-            software that simplify complex operations.
+            The software features a low-latency (<span className="text-[var(--color-brand-pink)] font-semibold">&lt;20ms</span>) audio engine leveraging Windows WASAPI loopback, and a self-tuning beat detection pipeline utilizing a custom NumPy implementation of the Spectral Flux onset detection algorithm. The backend streams real-time frequency data via WebSockets to a React-based circular ribbon spectrum visualizer, all wrapped inside a native PyQt6 desktop app.
           </p>
         </motion.div>
 
