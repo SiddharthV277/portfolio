@@ -19,7 +19,9 @@ import {
   SiExpress,
   SiSqlite,
   SiVite,
-  SiCloudflare
+  SiCloudflare,
+  SiAnthropic,
+  SiGooglegemini
 } from "react-icons/si";
 
 function Skills() {
@@ -58,6 +60,8 @@ function Skills() {
             <TechIcon icon={<SiVite />} label="Vite" color="text-[#ff2a6d]" />
             <TechIcon icon={<SiCloudflare />} label="Cloudflare" color="text-[#ffb07c]" />
             <TechIcon icon={<FaGit />} label="Git" color="text-[#05d9e8]" />
+            <TechIcon icon={<SiAnthropic />} label="Claude" color="text-[#E69E81]" />
+            <TechIcon icon={<SiGooglegemini />} label="Antigravity" color="text-[#8E75C8]" />
 
           </div>
         </div>
