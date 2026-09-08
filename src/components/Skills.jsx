@@ -4,7 +4,8 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaPhp,
-  FaGit
+  FaGit,
+  FaPython,
 } from "react-icons/fa";
 
 import {
@@ -20,7 +21,12 @@ import {
   SiSqlite,
   SiVite,
   SiCloudflare,
-  SiGooglegemini
+  SiGooglegemini,
+  SiNextdotjs,
+  SiWordpress,
+  SiDocker,
+  SiPostgresql,
+  SiPrisma,
 } from "react-icons/si";
 
 const ClaudeIcon = (props) => (
@@ -63,7 +69,13 @@ function Skills() {
             <TechIcon icon={<SiExpress />} label="Express" color="text-[#ffb07c]" />
             <TechIcon icon={<SiSqlite />} label="SQLite" color="text-[#05d9e8]" />
             <TechIcon icon={<SiVite />} label="Vite" color="text-[#ff2a6d]" />
+            <TechIcon icon={<SiPostgresql />} label="PostgreSQL" color="text-[#05d9e8]" />
             <TechIcon icon={<SiCloudflare />} label="Cloudflare" color="text-[#ffb07c]" />
+            <TechIcon icon={<FaPython />} label="Python" color="text-[#ffb07c]" />
+            <TechIcon icon={<SiNextdotjs />} label="Next.js" color="text-[#ffb07c]" />
+            <TechIcon icon={<SiWordpress />} label="WordPress" color="text-[#05d9e8]" />
+            <TechIcon icon={<SiDocker />} label="Docker" color="text-[#05d9e8]" />
+            <TechIcon icon={<SiPrisma />} label="Prisma" color="text-[#05d9e8]" />
             <TechIcon icon={<FaGit />} label="Git" color="text-[#05d9e8]" />
             <TechIcon icon={<ClaudeIcon />} label="Claude" color="text-[#E69E81]" />
             <TechIcon icon={<SiGooglegemini />} label="Antigravity" color="text-[#8E75C8]" />

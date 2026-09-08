@@ -50,7 +50,7 @@ function CustomCursor() {
     <>
       {/* Outer Pixel Box */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] opacity-90 mix-blend-screen"
+        className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[999999] opacity-90 mix-blend-screen"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,
@@ -64,7 +64,7 @@ function CustomCursor() {
       
       {/* Inner Core */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-white pointer-events-none z-[9999] shadow-[0_0_8px_white]"
+        className="fixed top-0 left-0 w-2 h-2 bg-white pointer-events-none z-[999999] shadow-[0_0_8px_white]"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,

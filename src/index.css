@@ -21,6 +21,12 @@ body {
 /* Base custom cursor rule */
 * {
   cursor: none !important;
+  scrollbar-width: none;           /* Firefox */
+  -ms-overflow-style: none;        /* IE / Edge legacy */
+}
+
+*::-webkit-scrollbar {
+  display: none;                   /* Chrome, Safari, Opera */
 }
 
 .glow-text {
